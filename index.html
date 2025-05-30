@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>L'écho des collégiens</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur L'écho des collégiens</h1>
+        <nav>
+            <a href="admin.html">Espace admin</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Journaux disponibles</h2>
+            <ul>
+            <?php
+            $dir = "uploads/";
+            if (is_dir($dir)) {
+                $files = array_diff(scandir($dir, SCANDIR_SORT_DESCENDING), array('.', '..'));
+                $pdfs = array_filter($files, function($f) use ($dir) {
+                    return is_file($dir.$f) && strtolower(pathinfo($f, PATHINFO_EXTENSION)) == "pdf";
+                });
+                if (count($pdfs) > 0) {
+                    foreach ($pdfs as $pdf) {
+                        echo '<li><a class="pdf-link" href="uploads/'.htmlspecialchars($pdf).'" target="_blank">📄 '.htmlspecialchars($pdf).'</a></li>';
+                    }
+                } else {
+                    echo '<li>Aucun journal disponible.</li>';
+                }
+            } else {
+                echo '<li>Dossier non trouvé.</li>';
+            }
+            ?>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 L'écho des collégiens</p>
+    </footer>
+</body>
+</html>
