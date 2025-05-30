@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #2d3e50;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+nav a {
+    color: #fff;
+    margin: 0 1em;
+    text-decoration: underline;
+}
+main {
+    max-width: 600px;
+    margin: 2em auto;
+    background: #fff;
+    padding: 2em;
+    border-radius: 8px;
+}
+.pdf-link {
+    font-size: 1.2em;
+    background: #2d3e50;
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.pdf-link:hover {
+    background: #1a2533;
+}
+.error {
+    color: red;
+}
+footer {
+    text-align: center;
+    margin-top: 2em;
+    color: #888;
+}
