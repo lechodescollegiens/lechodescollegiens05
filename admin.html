@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Espace Admin - L'écho des collégiens</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Espace Administrateur</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Téléverser un ou plusieurs journaux</h2>
+        <form id="upload-form" action="upload.php" method="POST" enctype="multipart/form-data">
+            <label for="pdf-upload">Sélectionnez un ou plusieurs PDF :</label>
+            <input type="file" id="pdf-upload" name="pdfs[]" accept="application/pdf" multiple>
+            <button type="submit">Téléverser</button>
+        </form>
+        <p id="upload-msg">
+        <?php
+            if (isset($_GET['upload'])) {
+                if ($_GET['upload'] == "success") echo "<span style='color:green;'>Upload réussi !</span>";
+                if ($_GET['upload'] == "error") echo "<span style='color:red;'>Erreur lors du téléversement.</span>";
+                if ($_GET['upload'] == "type") echo "<span style='color:red;'>Tous les fichiers doivent être des PDF.</span>";
+            }
+        ?>
+        </p>
+    </main>
+    <footer>
+        <p>&copy; 2025 L'écho des collégiens</p>
+    </footer>
+</body>
+</html>
